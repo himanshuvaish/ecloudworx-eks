@@ -10,7 +10,7 @@ module "eks" {
   cluster_addons = {
     vpc-cni = {
       before_compute = true
-      most_recent    = true
+      most_recent    = false
       configuration_values = jsonencode({
         env = {
           ENABLE_POD_ENI                    = "true"
