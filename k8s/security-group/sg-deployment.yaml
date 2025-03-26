@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1-nginx-deployment
+  labels:
+    app: app1-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app1-nginx
+  template:
+    metadata:
+      labels:
+        app: app1-nginx
+      annotations:
+        # Required to enable pod ENI
+        vpc.amazonaws.com/pod-eni: "true"
+        # Comma-separated list of security group IDs
+        vpc.amazonaws.com/security-groups: "sg-0123456789abcdef0,sg-0fedcba9876543210"  
+    spec:
+      containers:
+        - name: app1-nginx
+          image: stacksimplify/kube-nginxapp1:1.0.0
+          ports:
+            - containerPort: 80

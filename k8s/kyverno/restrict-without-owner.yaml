@@ -1,0 +1,18 @@
+#Write a Kyverno policy that restricts pods from running without an owner label
+apiVersion: kyverno.io/v1 
+kind: ClusterPolicy
+metadata:
+  name: restrict-without-owner
+spec:
+  rules:
+  - name: check-owner-label
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Pod must have an owner label"
+      pattern:
+        metadata:
+          labels:
+            Owner: "?*"

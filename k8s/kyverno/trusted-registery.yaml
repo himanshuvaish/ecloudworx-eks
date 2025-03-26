@@ -1,0 +1,7 @@
+# Write a kvyerno policy that only allows container images to be puled from public aws ecr registry
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: trusted-registry 
+spec:
+  

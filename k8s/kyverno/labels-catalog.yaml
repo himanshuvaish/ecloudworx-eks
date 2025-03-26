@@ -1,0 +1,19 @@
+# Write a kyverno network policy that add labels to the pods in catalog namespace with the label Owner: ecloudworx
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: add-owner-label
+spec:
+  rules:
+  - name: add-owner-label
+    match:
+      resources:
+        kinds:
+        - Pod
+        namespaces:
+        - catalog
+    mutate:
+      overlay:
+        metadata:
+          labels:
+            Owner: ecloudworx
