@@ -1,16 +1,28 @@
-provider "aws" {
-  default_tags {
-    tags = local.tags
-  }
-}
-
 terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 4.67.0"
+      version = "5.82.2"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "2.35.1"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "2.17.0"
     }
   }
 
-  required_version = ">= 1.4.2"
+}
+
+provider "aws" {
+  # Configuration options
+  region = var.region
+}
+
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
 }

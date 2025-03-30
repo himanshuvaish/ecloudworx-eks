@@ -1,23 +1,12 @@
-variable "cluster_name" {
-  description = "Name of the EKS cluster"
-  type        = string
-  default     = "eks-workshop"
-}
-
-variable "cluster_version" {
-  description = "EKS cluster version."
-  type        = string
-  default     = "1.31"
-}
-
-variable "ami_release_version" {
-  description = "Default EKS AMI release version for node groups"
-  type        = string
-  default     = "1.31.3-20250103"
-}
-
-variable "vpc_cidr" {
-  description = "Defines the CIDR block used on Amazon VPC created for Amazon EKS."
-  type        = string
-  default     = "10.42.0.0/16"
-}
+variable "region" {}
+variable "cluster_name" {}
+variable "instance_types" {}
+variable "public-subnet-1-cidr" {}
+variable "public-subnet-2-cidr" {}
+variable "private-subnet-1-cidr" {}
+variable "private-subnet-2-cidr" {}
+variable "vpc_cidr" {}
+variable "cluster_version" {}
+#variable "oidc_thumbprint_list" {}
+variable "accountid" {}
+variable "bastion_instance_type"{}
