@@ -11,7 +11,7 @@ spec:
     path: k8s/base/assets
   destination:
     server: https://kubernetes.default.svc
-    namespace: ui
+    namespace: assests
   syncPolicy:
     automated:
       prune: true

@@ -11,7 +11,7 @@ spec:
     path: k8s/base/catalog
   destination:
     server: https://kubernetes.default.svc
-    namespace: ui
+    namespace: catalog
   syncPolicy:
     automated:
       prune: true
