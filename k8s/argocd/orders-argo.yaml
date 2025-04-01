@@ -11,7 +11,7 @@ spec:
     path: k8s/base/orders
   destination:
     server: https://kubernetes.default.svc
-    namespace: ui
+    namespace: orders
   syncPolicy:
     automated:
       prune: true
