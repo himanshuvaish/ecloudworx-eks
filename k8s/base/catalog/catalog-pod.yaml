@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: catalog-pod
+  namespace: catalog
+  labels:
+    app: catalog
+spec:
+  containers:
+  - name: catalog-container
+    image: alpine
+    command: ["sh", "-c", "apk add --no-cache iputils && sleep 1000"]
