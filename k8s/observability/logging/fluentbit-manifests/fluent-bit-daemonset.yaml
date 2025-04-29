@@ -1,0 +1,40 @@
+﻿apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluent-bit
+  namespace: logging
+  labels:
+    k8s-app: fluent-bit
+spec:
+  selector:
+    matchLabels:
+      k8s-app: fluent-bit
+  template:
+    metadata:
+      labels:
+        k8s-app: fluent-bit
+    spec:
+      serviceAccountName: default
+      terminationGracePeriodSeconds: 10
+      tolerations:
+        - operator: 'Exists'
+      containers:
+      - name: fluent-bit
+        image: fluent/fluent-bit:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 2020
+            name: api
+        volumeMounts:
+          - name: varlog
+            mountPath: /var/log/containers
+            readOnly: true
+          - name: config
+            mountPath: /fluent-bit/etc/
+      volumes:
+        - name: varlog
+          hostPath:
+            path: /var/log/containers
+        - name: config
+          configMap:
+            name: fluent-bit-config

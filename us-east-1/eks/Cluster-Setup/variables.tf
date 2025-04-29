@@ -1,13 +1,13 @@
 variable "cluster_name" {
   description = "Name of the EKS cluster"
   type        = string
-  default     = "eks-workshop"
+  default     = "ecloudworx-master"
 }
 
 variable "cluster_version" {
   description = "EKS cluster version."
   type        = string
-  default     = "1.31"
+  default     = "1.32"
 }
 
 variable "ami_release_version" {
@@ -20,4 +20,10 @@ variable "vpc_cidr" {
   description = "Defines the CIDR block used on Amazon VPC created for Amazon EKS."
   type        = string
   default     = "10.42.0.0/16"
+}
+
+variable "region" {
+  description = "Defines the AWS region where the resources will be created."
+  type        = string
+  default     = "us-east-1"
 }

@@ -1,0 +1,10 @@
+﻿resources:
+  - bases/mesh.yaml
+  - bases/virtualnode-assets.yaml
+  - bases/virtualnode-carts.yaml
+  - bases/virtualnode-catalog.yaml
+  - bases/virtualnode-checkout.yaml
+  - bases/virtualnode-orders.yaml
+  - bases/virtualnode-ui.yaml
+  - bases/virtualrouter-catalog.yaml
+  - bases/virtualservice-catalog.yaml

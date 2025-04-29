@@ -5,7 +5,7 @@ resources:
   - catalog
   - carts
   - checkout
-  - assets
+  - assests
   - orders
   - ui
   - other

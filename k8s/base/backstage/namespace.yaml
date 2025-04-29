@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: backstage
+  labels:
+    name: backstage
+    app: backstage
+    environment: production
+    owner: backstage-team
+    team: backstage-team
+    tier: frontend

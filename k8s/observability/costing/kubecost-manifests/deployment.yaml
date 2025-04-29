@@ -1,0 +1,37 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubecost-cost-analyzer
+  namespace: kubecost
+  labels:
+    app: kubecost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubecost
+  template:
+    metadata:
+      labels:
+        app: kubecost
+    spec:
+      serviceAccountName: kubecost-sa
+      containers:
+      - name: cost-analyzer
+        image: kubecost/cost-analyzer:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9090
+          name: http
+        env:
+        - name: PROMETHEUS_URL
+          value: "http://prometheus-server.monitoring.svc.cluster.local"
+        - name: NETWORK_COST_MODEL
+          value: "aws"
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "500Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"

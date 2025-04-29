@@ -1,0 +1,10 @@
+﻿apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualRouter
+metadata:
+  name: catalog-router
+spec:
+  meshName: my-mesh
+  listeners:
+    - portMapping:
+        port: 80
+        protocol: http

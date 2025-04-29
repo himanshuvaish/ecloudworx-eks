@@ -1,0 +1,13 @@
+﻿apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: catalog-node
+spec:
+  meshName: my-mesh
+  listeners:
+    - portMapping:
+        port: 80
+        protocol: http
+  serviceDiscovery:
+    dns:
+      hostname: catalog.default.svc.cluster.local

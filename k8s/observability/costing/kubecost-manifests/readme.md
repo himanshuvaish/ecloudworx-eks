@@ -1,0 +1,1 @@
+kubectl port-forward --namespace kubecost deployment/kubecost-cost-analyzer 9090:9090
